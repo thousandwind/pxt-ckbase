@@ -3,6 +3,6 @@
 	"ckmakerBase.setstepperSpeed|block":"步进电机设置速度|%speed",
 	"ckmakerBase.stepperTurn|block":"步进电机转|%n|圈",
 	"ckmakerBase.stepperDegree|block":"步进电机转|%degree|度",
-	"ckmakerBase.stepperStep|block":"步进电机转|%degree|步",
+	"ckmakerBase.stepperStep|block":"步进电机转|%step|步（2048为一圈）",
 	"ckmakerBase.ultrasonic|block":"超声波获取距离|输入引脚 %inPin|输出引脚 %outPin"
 }
