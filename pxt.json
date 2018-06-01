@@ -1,0 +1,19 @@
+{
+    "name": "ckbase",
+    "version": "0.0.0",
+    "description": "ckmaker-base",
+    "license": "MIT",
+    "dependencies": {
+        "core": "*",
+        "radio": "*"
+    },
+    "files": [
+        "README.md",
+        "main.ts",
+        "_locales/zh/ckbase-strings.json"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "public": false
+}
