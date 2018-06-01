@@ -1,8 +1,8 @@
 {
 	"ckmakerBase.stepperMotorInit|block": "步进电机初始化|in0 %in0|in1 %in1|in2 %in2|in3 %in3",
 	"ckmakerBase.setstepperSpeed|block":"步进电机设置速度|%speed",
-	"ckmakerBase.stepperTurn|block":"步进电机转|%n 圈",
-	"ckmakerBase.stepperDegree|block":"步进电机转|%degree 度",
-	"ckmakerBase.stepperStep|block":"步进电机转|%degree 步（2048一圈）",
+	"ckmakerBase.stepperTurn|block":"步进电机转|%n|圈",
+	"ckmakerBase.stepperDegree|block":"步进电机转|%degree|度",
+	"ckmakerBase.stepperStep|block":"步进电机转|%degree|步",
 	"ckmakerBase.ultrasonic|block":"超声波获取距离|输入引脚 %inPin|输出引脚 %outPin"
 }
