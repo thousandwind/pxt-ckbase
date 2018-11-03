@@ -1,5 +1,5 @@
 /**
- * ckamkerBase blocks 123
+ * ckamkerBase blocks
  */
 //% weight=100 color=#436EEE icon="\uf1cb"
 //% block="Ckmaker-Base"
@@ -14,13 +14,20 @@ namespace ckmakerBase {
     };
 
     const stepperAllSteps = 2048;
-
+    //motor L
     let stepperCh0: DigitalPin;
     let stepperCh1: DigitalPin;
     let stepperCh2: DigitalPin;
     let stepperCh3: DigitalPin;
-
-    let stepperDirection: number;
+    //motor R
+    let stepperCh4: DigitalPin;
+    let stepperCh5: DigitalPin;
+    let stepperCh6: DigitalPin;
+    let stepperCh7: DigitalPin;
+    
+    let stepperDirectionL: number;
+    let stepperDirectionR: number;
+    
     let stepperSpeed: speedEnum;
 
     /**
@@ -40,11 +47,18 @@ namespace ckmakerBase {
     //% in3.fieldEditor="gridpicker" in3.fieldOptions.columns=4
     //% in3.fieldOptions.tooltips="false" in3.fieldOptions.width="300"
     //% weight=200 blockGap=3 color=#00BFFF
-    export function stepperMotorInit(in0: DigitalPin, in1: DigitalPin, in2: DigitalPin, in3: DigitalPin) {
+    export function stepperMotorLInitL(in0: DigitalPin, in1: DigitalPin, in2: DigitalPin, in3: DigitalPin) {
         stepperCh0 = in0;
         stepperCh1 = in1;
         stepperCh2 = in2;
         stepperCh3 = in3;
+        stepperSpeed = speedEnum.SPEED1;
+    }
+        export function stepperMotorLInitR(in4: DigitalPin, in5: DigitalPin, in6: DigitalPin, in7: DigitalPin) {
+        stepperCh4 = in4;
+        stepperCh5 = in5;
+        stepperCh6 = in6;
+        stepperCh7 = in7;
         stepperSpeed = speedEnum.SPEED1;
     }
 
@@ -75,13 +89,15 @@ namespace ckmakerBase {
         else stepperDirection = 0;
         if (stepperDirection == 1) {
             for (i = 0; i < step; i++) {
-                setpperMotor(i % 4);
+                setpperMotorR(i % 4);
+                setpperMotorL(i % 4);
                 basic.pause(stepperSpeed);
             }
         }
         else if (stepperDirection == 0) {
             for (i = -step; i > 0; i--) {
-                setpperMotor(i % 4);
+                setpperMotorR(i % 4);
+                setpperMotorL(i % 4);
                 basic.pause(stepperSpeed);
             }
         }
@@ -89,9 +105,13 @@ namespace ckmakerBase {
         pins.digitalWritePin(stepperCh1, 0);
         pins.digitalWritePin(stepperCh2, 0);
         pins.digitalWritePin(stepperCh3, 0);
+        pins.digitalWritePin(stepperCh4, 0);
+        pins.digitalWritePin(stepperCh5, 0);
+        pins.digitalWritePin(stepperCh6, 0);
+        pins.digitalWritePin(stepperCh7, 0);
 
     }
-    export function setpperMotor(step: number) {
+    export function setpperMotorL(step: number) {
         switch (step) {
             case 0: //1010
                 pins.digitalWritePin(stepperCh0, 1);
@@ -116,6 +136,34 @@ namespace ckmakerBase {
                 pins.digitalWritePin(stepperCh1, 0);
                 pins.digitalWritePin(stepperCh2, 0);
                 pins.digitalWritePin(stepperCh3, 1);
+                break;
+        }
+    }
+  export function setpperMotorR(step: number) {
+        switch (step) {
+            case 0: //1010
+                pins.digitalWritePin(stepperCh4, 1);
+                pins.digitalWritePin(stepperCh5, 0);
+                pins.digitalWritePin(stepperCh6, 0);
+                pins.digitalWritePin(stepperCh7, 0);
+                break;
+            case 1: //0110
+                pins.digitalWritePin(stepperCh4, 0);
+                pins.digitalWritePin(stepperCh5, 1);
+                pins.digitalWritePin(stepperCh6, 0);
+                pins.digitalWritePin(stepperCh7, 0);
+                break;
+            case 2: //0101
+                pins.digitalWritePin(stepperCh4, 0);
+                pins.digitalWritePin(stepperCh5, 0);
+                pins.digitalWritePin(stepperCh6, 1);
+                pins.digitalWritePin(stepperCh7, 0);
+                break;
+            case 3: //1001
+                pins.digitalWritePin(stepperCh4, 0);
+                pins.digitalWritePin(stepperCh5, 0);
+                pins.digitalWritePin(stepperCh6, 0);
+                pins.digitalWritePin(stepperCh7, 1);
                 break;
         }
     }
